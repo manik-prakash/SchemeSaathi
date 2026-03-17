@@ -1,8 +1,8 @@
 streamlit
 langchain
+langchain-core
 langchain-openai
 python-dotenv
 pydantic
-pandas
 ddgs
-tiktoken
+tenacity

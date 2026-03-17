@@ -21,12 +21,9 @@ def shortlist_schemes(profile: UserProfile) -> list[SchemeRecord]:
     for scheme in schemes:
         if "All" not in scheme.states_applicable and profile.state not in scheme.states_applicable:
             continue
+        if scheme.occupation_requirement == "Student" and profile.student_status == "No":
+            continue
         if scheme.occupation_requirement not in {"Any", profile.occupation}:
-            continue
-        if profile.student_status == "Yes" and scheme.occupation_requirement == "Student":
-            shortlisted.append(scheme)
-            continue
-        if profile.student_status == "No" and scheme.occupation_requirement == "Student":
             continue
         shortlisted.append(scheme)
 
