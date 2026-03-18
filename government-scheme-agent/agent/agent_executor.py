@@ -214,10 +214,10 @@ def run_agent(profile: UserProfile, follow_up: str | None = None, memory=None) -
     trace_steps.append(
         AgentTraceStep(
             step_number=2,
-            action='Shortlist relevant schemes',
+            action='Discover relevant schemes via web search',
             tool_name='scheme_finder',
             tool_input={'state': profile.state, 'occupation': profile.occupation, 'student_status': profile.student_status},
-            observation=summarize_observation(candidate_schemes, 'candidate schemes shortlisted'),
+            observation=summarize_observation(candidate_schemes, 'candidate schemes discovered (web search + LLM extraction, JSON fallback if offline)'),
         )
     )
 

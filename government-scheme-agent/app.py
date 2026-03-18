@@ -211,7 +211,7 @@ def main():
 
     with st.sidebar:
         st.header('About')
-        st.write('Uses **40+ local scheme records**, deterministic eligibility checks, and OpenRouter-backed LLM reasoning.')
+        st.write('Uses **live web search + LLM extraction** to discover schemes dynamically, with a local JSON fallback for offline use.')
         st.write('For educational and informational use only.')
         if memory.last_profile:
             st.info('✅ Previous profile loaded from session memory.')
