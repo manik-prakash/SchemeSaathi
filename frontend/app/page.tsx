@@ -70,10 +70,10 @@ export default function Home() {
       }}>
         <div>
           <h1 style={{ margin: 0, fontSize: "1rem", fontWeight: 700, color: "var(--color-text-primary)", lineHeight: 1.2 }}>
-            Government Scheme Eligibility
+            SchemeSathi
           </h1>
           <p style={{ margin: 0, fontSize: "0.73rem", color: "var(--color-text-muted)", lineHeight: 1.3 }}>
-            LLM-powered checker for Indian government schemes
+            AI-powered checker for Indian government schemes
           </p>
         </div>
 
@@ -154,7 +154,7 @@ export default function Home() {
               <p style={{ margin: 0, fontSize: "0.875rem", color: "var(--color-text-muted)", maxWidth: "320px", lineHeight: 1.6 }}>
                 Fill in your profile on the left and click{" "}
                 <strong style={{ color: "var(--color-sage)", fontWeight: 700 }}>Check My Eligibility</strong>
-                {" "}to discover applicable government schemes.
+                {" "}to discover government schemes you qualify for.
               </p>
               <div style={{ display: "flex", gap: "1.5rem", marginTop: "0.5rem" }}>
                 {["Live web search", "Eligibility check", "Smart ranking"].map((item) => (

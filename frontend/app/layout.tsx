@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Government Scheme Eligibility",
-  description: "LLM-powered eligibility checker for Indian government schemes",
+  title: "SchemeSathi",
+  description: "AI-powered eligibility checker for Indian government schemes",
 };
 
 export default function RootLayout({
