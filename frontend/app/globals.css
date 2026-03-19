@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ── Warm Pastel Design Tokens ── */
+:root {
+  --color-bg-page:        #fdf8f3;
+  --color-bg-card:        #fffdf9;
+  --color-bg-muted:       #f5ede3;
+  --color-bg-input:       #fef9f4;
+
+  --color-border:         #e8d9c8;
+  --color-border-focus:   #c9a882;
+
+  --color-text-primary:   #2d1f15;
+  --color-text-secondary: #6b4e38;
+  --color-text-muted:     #9a7a60;
+
+  --color-accent:         #c97b7b;
+  --color-accent-light:   #f3dada;
+  --color-accent-dark:    #9e5a5a;
+
+  --color-amber:          #b8832e;
+  --color-amber-light:    #fef0c7;
+
+  --color-sage:           #5a7d62;
+  --color-sage-light:     #cde3d0;
+
+  --color-eligible-bg:    #cde3d0;
+  --color-eligible-text:  #1e4a26;
+  --color-maybe-bg:       #fef0c7;
+  --color-maybe-text:     #6b4400;
+  --color-not-bg:         #f3dada;
+  --color-not-text:       #7a1f1f;
+
+  --radius-sm:    6px;
+  --radius-md:    12px;
+  --radius-lg:    20px;
+  --shadow-card:  0 1px 6px 0 rgba(80, 40, 10, 0.08), 0 2px 16px 0 rgba(80, 40, 10, 0.05);
+  --shadow-hover: 0 4px 24px 0 rgba(80, 40, 10, 0.14);
+  --shadow-form:  0 2px 20px 0 rgba(80, 40, 10, 0.10);
+}
+
+@theme inline {
+  --color-background: var(--color-bg-page);
+  --color-foreground: var(--color-text-primary);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── Input / Select base ── */
+.field-base {
+  width: 100%;
+  background: var(--color-bg-input);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  font-family: inherit;
+  line-height: 1.5;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.field-base:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(180, 140, 90, 0.18);
+}
+.field-base:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ── Select arrow ── */
+select.field-base {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a7a60' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.2rem;
+  cursor: pointer;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--color-bg-card);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Section label ── */
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Animations ── */
+@keyframes bar-grow {
+  from { width: 0; }
+  to   { width: var(--bar-width); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-dot {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%            { transform: scale(1.0); opacity: 1;   }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.4s ease both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease both;
+}
+
+/* staggered children */
+.stagger > * { animation: fade-up 0.4s ease both; }
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger > *:nth-child(5) { animation-delay: 0.25s; }
+
+/* ── Details / Summary reset ── */
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }

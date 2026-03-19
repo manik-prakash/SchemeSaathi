@@ -91,8 +91,11 @@ def _llm_summary(profile: UserProfile, results: list[EligibilityResult], follow_
         'Mention the strongest matches first, include whether they are national or state-level schemes, explain the main eligibility reasons, and end with an informational disclaimer.\n\n'
         f"{json.dumps(payload, indent=2)}"
     )
-    response = llm.invoke(prompt)
-    return response.content if isinstance(response.content, str) else _fallback_summary(results)
+    try:
+        response = llm.invoke(prompt)
+        return response.content if isinstance(response.content, str) else _fallback_summary(results)
+    except Exception:
+        return _fallback_summary(results)
 
 
 def _preference_score(result: EligibilityResult, follow_up: str | None, profile: UserProfile) -> float:
