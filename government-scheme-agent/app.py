@@ -66,17 +66,6 @@ CSS = """
 /* Apply link */
 .apply-link a { font-weight: 600; color: #2563eb; }
 
-/* Footer disclaimer */
-.disclaimer {
-    background: #f9fafb;
-    border-left: 4px solid #d1d5db;
-    padding: 0.6rem 1rem;
-    border-radius: 4px;
-    color: #6b7280;
-    font-size: 0.82rem;
-    margin-top: 1rem;
-}
-
 /* Section label */
 .section-label {
     font-size: 0.75rem;
@@ -210,13 +199,8 @@ def main():
     memory = load_memory(st.session_state)
 
     with st.sidebar:
-        st.header('About')
-        st.write('Uses **live web search + LLM extraction** to discover schemes dynamically, with a local JSON fallback for offline use.')
-        st.write('For educational and informational use only.')
         if memory.last_profile:
             st.info('✅ Previous profile loaded from session memory.')
-        st.markdown('---')
-        st.caption('Recommended Python: `3.10` or `3.11`')
 
     col1, col2 = st.columns([1, 1], gap='large')
 
@@ -226,7 +210,19 @@ def main():
         st.markdown('<div class="section-label">Personal Details</div>', unsafe_allow_html=True)
         st.number_input('Age', min_value=0, max_value=120, value=19, key='age')
         st.selectbox('Gender', ['Any', 'Male', 'Female', 'Other'], key='gender')
-        st.selectbox('State', ['All', 'Karnataka', 'Maharashtra', 'Delhi', 'Tamil Nadu'], key='state')
+        st.selectbox('State', [
+            'All',
+            # States
+            'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh',
+            'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',
+            'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram',
+            'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu',
+            'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal',
+            # Union Territories
+            'Andaman and Nicobar Islands', 'Chandigarh',
+            'Dadra and Nagar Haveli and Daman and Diu', 'Delhi', 'Jammu and Kashmir',
+            'Ladakh', 'Lakshadweep', 'Puducherry',
+        ], key='state')
         st.selectbox('Area Type', ['Rural', 'Urban'], key='area_type')
 
         st.markdown('<div class="section-label">Education & Occupation</div>', unsafe_allow_html=True)
@@ -259,11 +255,6 @@ def main():
         else:
             st.info('Submit your profile on the left to check eligibility.')
 
-    st.markdown(
-        '<div class="disclaimer">⚠️ <strong>Disclaimer:</strong> This system provides an informational estimate only. '
-        'Final eligibility depends on official government rules and verification.</div>',
-        unsafe_allow_html=True,
-    )
 
 
 if __name__ == '__main__':
